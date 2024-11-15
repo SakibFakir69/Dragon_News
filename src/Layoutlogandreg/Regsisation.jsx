@@ -30,6 +30,7 @@ function Regsisation() {
 
             updateProfile(x,{displayName:name,photoURL:photoURL})
             .then(()=>{
+                ///update fun karaona sob kicu user thke acces korata parbo
                 console.log("user update succesfully");
                 setuser(x);
                 navgateToHome("/")

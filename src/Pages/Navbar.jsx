@@ -57,7 +57,7 @@ function Navbar() {
             </div>
           ) : (
             <div>
-              <NavLink to='/auth/login' className={`px-6 py-2 border-2 rounded-md text-xl text-white`}>Log in</NavLink>
+              <NavLink to='/auth/login' className={`px-6 py-2 border-2 rounded-md text-xl text-white bg-black`}>Log in</NavLink>
           
 
            
