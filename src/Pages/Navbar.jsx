@@ -6,7 +6,7 @@ function Navbar() {
 
     
   return (
-    <div className='flex justify-between px-4 mt-4'>
+    <div className='flex justify-between px-4 p-4'>
 
         <div>
 
@@ -18,8 +18,11 @@ function Navbar() {
 
         </div>
         <div className='flex gap-4'>
-            <img src='../assets/user.png'/>
-            <NavLink  to='/auth/login' className='px-5 py-2 bg-green-300 rounded-sm'>Login</NavLink>
+            <img src='../assets/user.png' className='rounded-full'/>
+
+            <NavLink  to='/auth/login' className={`bg-black py-2 px-6 rounded-md text-white `}>Login</NavLink>
+
+         
         </div>
 
 
