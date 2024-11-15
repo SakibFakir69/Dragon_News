@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyContextapi } from "../ContextDokan/ContextApi";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 function Regsisation() {
 
-    const {handelRegsitationUser}= useContext(MyContextapi);
+    const {handelRegsitationUser,setuser}= useContext(MyContextapi);
 
 
     const navgateToHome = useNavigate();
@@ -23,7 +23,21 @@ function Regsisation() {
         handelRegsitationUser( email , password)
         .then((result)=>{
             console.log("created");
-            navgateToHome('/')
+
+            const x = result.user;
+
+            // update profile 
+
+            updateProfile(x,{displayName:name,photoURL:photoURL})
+            .then(()=>{
+                console.log("user update succesfully");
+                setuser(x);
+                navgateToHome("/")
+            })
+            .catch((error)=>{
+                console.log("error from update prfile")
+            })
+            
         })
         .catch((error)=>{
             console.log("we found error on Reg",error)

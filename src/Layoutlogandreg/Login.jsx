@@ -4,7 +4,7 @@ import { MyContextapi } from "../ContextDokan/ContextApi";
 function Login() {
 
 
-    const {handelLoginuser} = useContext(MyContextapi);
+    const {handelLoginuser,setuser} = useContext(MyContextapi);
 
     const navgateTohome = useNavigate();
 
@@ -20,7 +20,10 @@ function Login() {
         handelLoginuser(email,password)
         .then((result)=>{
             console.log(result);
-            const user = result.user;
+            const userx = result.user;
+            console.log(userx,"sdfsdf")
+            setuser(userx);
+            
             navgateTohome('/')
 
 

@@ -1,8 +1,8 @@
 
 
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateCurrentUser } from 'firebase/auth';
 import auth from '../FirebaseCon/Firebase';
 export const MyContextapi = createContext();
 function ContextApi({children}) {
@@ -21,7 +21,21 @@ function ContextApi({children}) {
    }
 
    const [ user , setuser ] = useState(null);
+   console.log(user,"context api");
 
+   
+
+   useEffect(()=>{
+
+
+    const unscribe = onAuthStateChanged(auth , (currentUser)=>{
+      console.log(currentUser , "from useeefft")
+
+    
+    })
+
+    return ()=> unscribe();
+   })
 
 
 
@@ -30,7 +44,8 @@ function ContextApi({children}) {
     const authInfo = {
       handelRegsitationUser,
       handelLoginuser,
-      setuser
+      setuser,
+      user
 
     }
 
