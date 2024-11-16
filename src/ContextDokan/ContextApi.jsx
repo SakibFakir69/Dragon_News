@@ -30,6 +30,7 @@ function ContextApi({children}) {
 
     const unscribe = onAuthStateChanged(auth , (currentUser)=>{
       console.log(currentUser , "from useeefft")
+      setuser(currentUser)
 
     
     })

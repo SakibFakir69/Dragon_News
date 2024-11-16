@@ -10,6 +10,8 @@ import ShowNews from './Pages/ShowNews.jsx'
 import Auth from './Layoutlogandreg/Auth.jsx'
 import Login from './Layoutlogandreg/Login.jsx'
 import Regsisation from './Layoutlogandreg/Regsisation.jsx'
+import Detailspage from './Details/Detailspage.jsx'
+import Details from './Pages/Details.jsx'
 
 
 
@@ -53,7 +55,15 @@ const route = createBrowserRouter([
   },
   {
     path : 'news',
-    element : <h2>This is news</h2>
+    element : <Detailspage/>,
+    children :[
+      {
+        path : '/news/:id',
+        element : <Details/>,
+        loader : ({params})=> fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
+      }
+    ]
+
   }
 ])
 

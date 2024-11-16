@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink ,Link} from "react-router-dom";
 
 function NewsApi({ data }) {
   console.log(data);
@@ -12,6 +13,7 @@ function NewsApi({ data }) {
     thumbnail_url,
     title,
     total_view,
+    _id
   } = data;
 
   //   show here
@@ -38,7 +40,7 @@ function NewsApi({ data }) {
         <p className="text-xl font-semibold">{title}</p>
         <img src={thumbnail_url} />
         <p>{details}</p>
-        <button className="text-orange-500">Read more</button>
+        <Link to={`/news/${_id}`} className="text-orange-500">Read more</Link>
         <hr></hr>
         <div className="flex justify-between p-4">
           <p>{rating.number}</p>
